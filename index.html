@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wrist In Peace</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-block">
+          <div class="brand-badge">CB</div>
+          <div>
+            <h1>Wrist In Peace</h1>
+            <p>Inventory Suite</p>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Primary navigation">
+          <div class="nav-group">
+            <p class="nav-heading">Inventory</p>
+            <button class="nav-link active" data-view="inventory-list">Inventory List</button>
+            <button class="nav-link" data-view="maintain-products">Maintain Products</button>
+          </div>
+
+          <div class="nav-group">
+            <p class="nav-heading">Purchase Orders</p>
+            <button class="nav-link" data-view="vendors">Manage Vendors</button>
+            <button class="nav-link" data-view="po-list">PO List</button>
+          </div>
+
+          <div class="nav-group">
+            <p class="nav-heading">Sales</p>
+            <button class="nav-link" data-view="customers">Maintain Customers</button>
+            <button class="nav-link" data-view="sales">Manage Sales</button>
+          </div>
+        </nav>
+      </aside>
+
+      <div class="content-panel">
+        <header class="topbar">
+          <div>
+            <p class="topbar-kicker">Operations Dashboard</p>
+            <h2>Wrist In Peace</h2>
+          </div>
+          <div class="topbar-actions">
+            <button id="home-btn" class="btn btn-secondary">Home</button>
+            <button id="signoff-btn" class="btn btn-primary">Sign Off</button>
+          </div>
+        </header>
+
+        <main class="main-content">
+          <section id="dashboard-view" class="view active">
+            <div class="hero-card">
+              <div>
+                <p class="eyebrow">Smart operations</p>
+                <h3>Monitor stock, suppliers, and sales from one control center.</h3>
+                <p>Launch any core workflow with a single click and keep your store moving.</p>
+              </div>
+              <div class="hero-stat">
+                <span>Live Stock</span>
+                <strong id="stock-count">0</strong>
+              </div>
+            </div>
+
+            <div id="quick-launch-grid" class="quick-launch-grid"></div>
+          </section>
+
+          <section id="inventory-list-view" class="view">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Inventory</p>
+                <h3>Inventory List</h3>
+              </div>
+              <button class="btn btn-primary" data-view="maintain-products">Add Product</button>
+            </div>
+
+            <div class="toolbar-card">
+              <label class="field">
+                <span>Search</span>
+                <input id="inventory-search" type="search" placeholder="Search by item name or ID" />
+              </label>
+              <label class="field">
+                <span>Category</span>
+                <select id="inventory-category">
+                  <option value="all">All Categories</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="table-card">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Item ID</th>
+                    <th>Item Name</th>
+                    <th>Category</th>
+                    <th>Stock</th>
+                    <th>Unit Price</th>
+                    <th>Supplier</th>
+                    <th>Photo</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="inventory-table-body"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="maintain-products-view" class="view">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Inventory</p>
+                <h3 id="product-form-title">Maintain Products</h3>
+              </div>
+              <button id="reset-form-btn" class="btn btn-secondary">Reset</button>
+            </div>
+
+            <div class="form-grid">
+              <form id="product-form" class="card form-card">
+                <input type="hidden" id="item-id" />
+                <label class="field">
+                  <span>Item ID</span>
+                  <select id="product-id" name="productId" required>
+                    <option value="">Select an item</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span>Item Name</span>
+                  <input id="product-name" name="productName" type="text" placeholder="Carbon Fiber Frame" required />
+                </label>
+                <label class="field">
+                  <span>Category</span>
+                  <select id="product-category" name="productCategory" required>
+                    <option value="">Select Category</option>
+                    <option value="Rolex">Rolex</option>
+                    <option value="Patek Philippe">Patek Philippe</option>
+                    <option value="Richard Mille">Richard Mille</option>
+                    <option value="Complications">Complications</option>
+                  </select>
+                </label>
+                <label class="field">
+                  <span>Stock Quantity</span>
+                  <input id="product-stock" name="productStock" type="number" min="0" required />
+                </label>
+                <label class="field">
+                  <span>Unit Price</span>
+                  <input id="product-price" name="productPrice" type="number" min="0" step="0.01" required />
+                </label>
+                <label class="field">
+                  <span>Supplier / Vendor</span>
+                  <input id="product-supplier" name="productSupplier" type="text" placeholder="AeroWorks" required />
+                </label>
+                <label class="field">
+                  <span>Photo Placeholder</span>
+                  <input id="product-photo" name="productPhoto" type="text" placeholder="Optional photo URL or label" />
+                </label>
+                <div class="form-actions">
+                  <button class="btn btn-primary" type="submit">Save Product</button>
+                </div>
+              </form>
+
+              <div class="card preview-card">
+                <p class="eyebrow">Quick Preview</p>
+                <h4 id="preview-name">Choose an item</h4>
+                <div id="preview-image" class="preview-image"></div>
+                <p id="preview-meta">Your product details will appear here as you edit.</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="vendors-view" class="view">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Purchase Orders</p>
+                <h3>Manage Vendors</h3>
+              </div>
+            </div>
+            <div class="card info-card">
+              <p>Vendor onboarding, payment terms, and supplier performance tracking are ready for expansion.</p>
+            </div>
+          </section>
+
+          <section id="po-list-view" class="view">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Purchase Orders</p>
+                <h3>PO List</h3>
+              </div>
+            </div>
+            <div class="card info-card">
+              <p>Purchase orders and approvals can be displayed here with line items and delivery dates.</p>
+            </div>
+          </section>
+
+          <section id="customers-view" class="view">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Sales</p>
+                <h3>Maintain Customers</h3>
+              </div>
+            </div>
+            <div class="card info-card">
+              <p>Customer accounts and loyalty information are set up to grow with your storefront.</p>
+            </div>
+          </section>
+
+          <section id="sales-view" class="view">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Sales</p>
+                <h3>Manage Sales</h3>
+              </div>
+            </div>
+            <div class="card info-card">
+              <p>Sales orders, returns, and fulfillment workflows can be managed from this view.</p>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

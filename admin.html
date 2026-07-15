@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Summary</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-block">
+          <div class="brand-badge">CB</div>
+          <div>
+            <h1>Wrist In Peace</h1>
+            <p>Admin summary</p>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <div class="nav-group">
+            <p class="nav-heading">Navigation</p>
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
+            <a class="nav-link" href="index.html">Main App</a>
+            <a class="nav-link" href="login.html" onclick="localStorage.removeItem('watchInventoryAuth'); localStorage.removeItem('watchInventoryUser');">Sign Off</a>
+          </div>
+        </nav>
+      </aside>
+
+      <div class="content-panel">
+        <header class="topbar">
+          <div>
+            <p class="topbar-kicker">Admin overview</p>
+            <h2>Inventory Summary</h2>
+          </div>
+          <div class="topbar-actions">
+            <a class="btn btn-secondary" href="dashboard.html">Back</a>
+            <a class="btn btn-primary" href="index.html">Open App</a>
+          </div>
+        </header>
+
+        <main class="main-content">
+          <div class="card info-card">
+            <h3>Inventory totals</h3>
+            <p>This page is now written as a standalone HTML view for the same inventory system.</p>
+          </div>
+          <div class="table-card">
+            <table>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Category</th>
+                  <th>Stock</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody id="admin-table-body"></tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+      const adminBody = document.getElementById('admin-table-body');
+      if (adminBody && window.inventoryItems) {
+        adminBody.innerHTML = window.inventoryItems.map((item) => `
+          <tr>
+            <td>${item.itemName}</td>
+            <td>${item.category}</td>
+            <td>${item.stockQuantity}</td>
+            <td>${formatCurrency(item.unitPrice)}</td>
+          </tr>
+        `).join('');
+      }
+    </script>
+  </body>
+</html>

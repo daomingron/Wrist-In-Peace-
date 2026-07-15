@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "itemId": "PROD-001",
+    "itemName": "Cosmograph Daytona",
+    "category": "Rolex",
+    "stockQuantity": 5,
+    "unitPrice": 949000,
+    "supplierName": "Rolex Boutique",
+    "photo": "./Pictures/1. Rolex/Cosmograph Daytona.JPG"
+  },
+  {
+    "id": 2,
+    "itemId": "PROD-006",
+    "itemName": "Nautilus",
+    "category": "Patek Philippe",
+    "stockQuantity": 2,
+    "unitPrice": 7680000,
+    "supplierName": "Patek Philippe House",
+    "photo": "./Pictures/2. Patek Philippe/Nautilus.jpg"
+  },
+  {
+    "id": 3,
+    "itemId": "PROD-010",
+    "itemName": "RM 055",
+    "category": "Richard Mille",
+    "stockQuantity": 1,
+    "unitPrice": 9500000,
+    "supplierName": "Richard Mille Atelier",
+    "photo": "./Pictures/3. Richard Mill/RM 055.jpg"
+  }
+]

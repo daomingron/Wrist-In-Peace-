@@ -1,0 +1,39 @@
+Act as an expert frontend developer. I need to rebuild an old inventory C:\Users\Ronnie\Desktop\watch_inventory_system final\Old system into a modern, responsive web application using only vanilla HTML5, CSS3, and JavaScript (ES6+). 
+
+The layout, navigation structure, and functionality must closely replicate the core components of this reference dashboard: https://www.mrc-productivity.com/mrcjava/servlet/INVENTORYVIDEO.I00100s
+
+Please generate the complete, production-ready code (modularized into index.html, styles.css, and app.js) based on the following requirements:
+
+1. ARCHITECTURE & LAYOUT
+- A clean, modern dashboard layout with a fixed sidebar navigation and a main content area.
+- Sidebar Navigation Menu matching the reference:
+  * Inventory (Links to: Inventory List, Maintain Products)
+  * Purchase Orders (Links to: Manage Vendors, PO List)
+  * Sales (Links to: Maintain Customers, Manage Sales)
+- A Top Header bar containing the application title ("Crazybikes Inventory Management"), a Home button, and a Sign Off button.
+- Main Content Area: An interactive dashboard view containing a grid of Quick-Launch Cards for each application section (Inventory List, Maintain Products, Manage Vendors, PO List, Maintain Customers, Manage Sales). Each card needs a title, a short description, and a "Run Application" action button.
+
+2. SYSTEM CONTENT & SEED DATA (In-Memory JavaScript Array)
+Initialize the application with structured sample data representing a bicycle inventory system. The data schema for items must include:
+- Item ID (e.g., PROD-001)
+- Item Name (e.g., Carbon Fiber Frame, Hydraulic Disc Brakes, Shimano Derailleur)
+- Category (e.g., Components, Frames, Accessories)
+- Stock Quantity (integer)
+- Unit Price (decimal)
+- Supplier/Vendor Name
+- Item Photo Placeholder (Use clean, stylized SVG placeholders or dynamic Unsplash URLs like 'https://images.unsplash.com/photo-...' relevant to cycling/bike parts so the UI has rich visual assets).
+
+3. DYNAMIC INTERACTION (JavaScript)
+- SPA Behavior: Clicking sidebar links or quick-launch cards should dynamically swap the main content area view without a full page reload.
+- Inventory List View: Render the item data into a clean, searchable, and filterable data table.
+- Search/Filter: Add a real-time text input filter matching by Item Name or ID, and a dropdown filter by Category.
+- Basic CRUD Simulation: 
+  * "Maintain Products" view should contain a functional HTML form to add a new item or edit an existing one.
+  * Submitting the form should update the local state array and immediately reflect in the "Inventory List" table view.
+
+4. UI/UX STYLING (CSS)
+- Use a cohesive color palette (e.g., deep slate blue/navy for navigation sidebar, crisp white cards, and vibrant accents for action buttons).
+- Fully responsive design using CSS Flexbox/Grid that adjusts gracefully from desktop monitors down to mobile devices.
+- Include subtle hover states, clean table borders, data padding, and professional typography (sans-serif).
+
+Please output the code clearly divided by files: index.html, styles.css, and app.js. Ensure all event listeners and state management are well-commented.

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-block">
+          <div class="brand-badge">CB</div>
+          <div>
+            <h1>Wrist In Peace</h1>
+            <p>Operations view</p>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <div class="nav-group">
+            <p class="nav-heading">Navigation</p>
+            <a class="nav-link" href="index.html">Main Dashboard</a>
+            <a class="nav-link" href="admin.html">Inventory Summary</a>
+            <a class="nav-link" href="login.html" onclick="localStorage.removeItem('watchInventoryAuth'); localStorage.removeItem('watchInventoryUser');">Sign Off</a>
+          </div>
+        </nav>
+      </aside>
+
+      <div class="content-panel">
+        <header class="topbar">
+          <div>
+            <p class="topbar-kicker">Overview</p>
+            <h2>Inventory Dashboard</h2>
+          </div>
+          <div class="topbar-actions">
+            <a class="btn btn-secondary" href="index.html">Open App</a>
+            <a class="btn btn-primary" href="admin.html">Admin Summary</a>
+          </div>
+        </header>
+
+        <main class="main-content">
+          <section class="hero-card">
+            <div>
+              <p class="eyebrow">Live overview</p>
+              <h3>Inventory monitoring is ready for use as a standalone web page.</h3>
+              <p>You can open the modern dashboard from the main app and use the summary page for administration.</p>
+            </div>
+            <div class="hero-stat">
+              <span>Watch Models</span>
+              <strong id="dashboard-model-count">0</strong>
+            </div>
+          </section>
+
+          <div class="card info-card">
+            <h3>Quick snapshot</h3>
+            <p>Use the main dashboard to add, edit, and inspect products. The summary page provides a concise inventory overview.</p>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+      const countEl = document.getElementById('dashboard-model-count');
+      if (countEl && window.inventoryItems) {
+        countEl.textContent = window.inventoryItems.length;
+      }
+    </script>
+  </body>
+</html>
