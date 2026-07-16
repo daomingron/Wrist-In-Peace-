@@ -181,12 +181,18 @@ function init() {
     return;
   }
 
+  inventoryItems.length = 0;
+  state.searchTerm = '';
+  state.categoryFilter = 'all';
+  state.editingId = null;
+
   renderQuickLaunchCards();
   populateCategoryFilter();
   populateItemSelector();
   attachListeners();
   updateStockCount();
   renderInventoryList();
+  resetForm();
   switchView('dashboard');
 }
 
@@ -294,7 +300,7 @@ function renderQuickLaunchCards() {
 function populateCategoryFilter() {
   const select = document.getElementById('inventory-category');
   if (!select) return;
-  const categories = ['all', ...new Set(inventoryItems.map((item) => item.category))];
+  const categories = ['all', ...new Set([...inventoryItems, ...maintainProductCatalog].map((item) => item.category))];
   select.innerHTML = categories.map((category) => `<option value="${category}">${category === 'all' ? 'All Categories' : category}</option>`).join('');
 }
 
